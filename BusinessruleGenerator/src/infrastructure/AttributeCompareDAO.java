@@ -12,7 +12,7 @@ public class AttributeCompareDAO extends RootDAO {
 
 	public BusinessRule getData(int id) {
 		BusinessRule br = null;
-		String query = "SELECT br.RuleName, br.BusinessRuleNr, tab.TableName, col.ColumnName,  atcr.CompareValue, acrr.Operator, atcr.CompareType "
+		String query = "SELECT br.RuleName, br.BusinessRuleNr, tab.TableName, col.ColumnName,  atcr.CompareValue, atcr.Operator"
 				+ "FROM BusinessRule br, Attribute_Compare_rule atcr, Column col, Table tab " + "WHERE br.RuleNr =" + id
 				+ " AND br.RuleNr = atcr.RuleNr AND atcr.ColumNr=col.ColumnNr AND col.TableNr=tab.TableNr";
 		try (Connection con = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD)) {
