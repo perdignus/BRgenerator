@@ -22,7 +22,7 @@ public class AttributeCompareDAO extends RootDAO {
 			while (dbResultSet.next()) {
 				br = new AttributeCompareRule(dbResultSet.getString("RuleName"), dbResultSet.getInt("BusinessRuleNr"),
 						dbResultSet.getString("TableName"), dbResultSet.getString("ColumnName"),
-						dbResultSet.getString("Operator"), dbResultSet.getInt("CompareValue"));
+						dbResultSet.getString("Operator"), dbResultSet.getString("CompareValue"));
 			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();

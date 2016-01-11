@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import data.BusinessRule;
 import data.BusinessRuleService;
+import infrastructure.AttributeCompareDAO;
 import infrastructure.AttributeRangeDAO;
 import infrastructure.RootDAO;
 import infrastructure.TargetDAO;
@@ -39,10 +40,10 @@ public class GeneratorController {
 				code.add(tg.generateAttributeRangeTrigger());
 				break;
 			case "ATTRIBUTE_COMPARE":
-				rootDAO = new AttributeRangeDAO();
+				rootDAO = new AttributeCompareDAO();
 				brc.setBusinessRuleFromDAO(rootDAO, targetDAO, id);
 				tg = new Oracle(brc);
-				code.add(tg.generateAttributeRangeTrigger());
+				code.add(tg.generateAttributeCompareTrigger());
 				break;
 			default:
 				break;

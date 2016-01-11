@@ -53,6 +53,14 @@ public class BusinessRuleService {
 		return ((AttributeRangeRule) br).getIsIn();
 	}
 
+	public String getOperator(){
+		return ((AttributeCompareRule) br).getOperator();
+	}
+	
+	public String getCompareValue(){
+		return ((AttributeCompareRule) br).getCompareValue();
+	}
+	
 	public void excecuteCode(String code) {
 		targetDAO.excecute(code);
 		saveBusinessRule(br, "temp.obj");

@@ -37,21 +37,21 @@ public class Oracle extends TriggerGenerate {
 
 	@Override
 	public String generateAttributeCompareTrigger() {
-//		String name = bc.getNaamRule();
-//		String targetTable = bc.getTargetTable();
-//		String targetColum = bc.getTargetColum();
-//		String operator = bc.getOperator();
-//		int compareValue = bc.getCompareVaule();
+
 		StringBuilder sb = new StringBuilder();
-//		sb.append("CREATE OR REPLACE " + name);
-//		sb.append(" before insert or update of " + targetColum);
-//		sb.append(" on " + targetTable);
-//		sb.append(" begin");
-//		sb.append(" if(:NEW." + targetColum + " " + between + " " + controleMinWaarde + " and " + controleMaxWaarde
-//				+ ") then");
-//		sb.append(" raise_application_error(-20002,'trigger " + name + " violated');");
-//		sb.append(" end if;");
-//		sb.append("end " + name + ";");
+		String name = bc.getNaamRule();
+		String targetTable = bc.getTargetTable();
+		String targetColum = bc.getTargetColum();
+		String operator = bc.getOperator();
+		String compareValue = bc.getCompareValue();
+		sb.append("CREATE OR REPLACE " + name);
+		sb.append(" before insert or update of " + targetColum);
+		sb.append(" on " + targetTable);
+		sb.append(" begin");
+		sb.append(" if(:NEW." + targetColum + " " + operator + " " + compareValue + ") then");
+		sb.append(" raise_application_error(-20002,'trigger " + name + " violated');");
+		sb.append(" end if;");
+		sb.append("end " + name + ";");
 		return sb.toString();
 	}
 

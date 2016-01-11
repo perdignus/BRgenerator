@@ -1,13 +1,11 @@
 package data;
 
-import data.Typen.Type;
-
 public class AttributeCompareRule extends BusinessRule {
 	private String operator;
-	private int compareValue;
+	private String compareValue;
 
 	public AttributeCompareRule(String naam, int id, String rootTabel, String rootColom, String operator,
-			int compareValue) {
+			String compareValue) {
 		super(naam, id, rootTabel, rootColom, Typen.Type.ATTRIBUTE_COMPARE);
 		this.operator = operator;
 		this.compareValue = compareValue;
@@ -21,11 +19,11 @@ public class AttributeCompareRule extends BusinessRule {
 		this.operator = operator;
 	}
 
-	public int getCompareValue() {
+	public String getCompareValue() {
 		return compareValue;
 	}
 
-	public void setCompareValue(int compareValue) {
+	public void setCompareValue(String compareValue) {
 		this.compareValue = compareValue;
 	}
 
