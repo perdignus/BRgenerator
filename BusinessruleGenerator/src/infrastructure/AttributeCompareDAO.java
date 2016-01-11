@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import data.AttributeCompareRule;
 import data.BusinessRule;
 
@@ -24,16 +23,7 @@ public class AttributeCompareDAO extends RootDAO {
 				br = new AttributeCompareRule(dbResultSet.getString("RuleName"), dbResultSet.getInt("BusinessRuleNr"),
 						dbResultSet.getString("TableName"), dbResultSet.getString("ColumnName"),
 						dbResultSet.getString("Operator"), dbResultSet.getInt("CompareValue"));
-				// break;
 			}
-
-			// ^database is nog niet compleet
-			// if (id == 0) {
-			// br = new AttributeRangeRule("name", id, "RootTable",
-			// "RootColumn", 0, 2, true);
-			// } else
-			// br = new AttributeRangeRule("TEST", id, "RootTEST", "RootTEST",
-			// 4, 2, false);
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
