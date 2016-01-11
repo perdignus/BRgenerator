@@ -10,7 +10,6 @@ public class Main {
 		gener.generate();
 		for (String s : gener.getCode()) {
 			gener.excecute(s);
-			//s
 		}
 
 	}
