@@ -7,7 +7,7 @@ public class AttributeRangeRule extends BusinessRule {
 
 	public AttributeRangeRule(String naam, int id, String rootTabel, String rootColom, int controleMinWaarde,
 			int controleMaxWaarde, boolean isIn) {
-		super(naam, id, rootTabel, rootColom, null);
+		super(naam, id, rootTabel, rootColom, Typen.Type.ATTRIBUTE_RANGE);
 		this.controleMaxWaarde = controleMaxWaarde;
 		this.controleMinWaarde = controleMinWaarde;
 		this.isIn = isIn;

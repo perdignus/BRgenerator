@@ -52,12 +52,12 @@ public class BusinessRule implements Serializable{
 		this.type = type;
 	}
 
-	public BusinessRule(String naam, int id, String rootTabel, String rootColom, Type attributeRange) {
+	public BusinessRule(String naam, int id, String rootTabel, String rootColom, Type ruleType) {
 		this.naam = naam;
 		this.id = id;
 		this.rootTabel = rootTabel;
 		this.rootColom = rootColom;
-		this.type = attributeRange;
+		this.type = ruleType;
 	}
 
 	public String getNaam() {

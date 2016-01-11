@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import data.AttributeRangeRule;
+import data.AttributeCompareRule;
 import data.BusinessRule;
 
-public class AttributeRangeDAO extends RootDAO {
+public class AttributeCompareDAO extends RootDAO {
 
 	public BusinessRule getData(int id) {
 		BusinessRule br = null;
@@ -21,10 +21,7 @@ public class AttributeRangeDAO extends RootDAO {
 			ResultSet dbResultSet = stmt.executeQuery(query);
 
 			while (dbResultSet.next()) {
-				br = new AttributeRangeRule(dbResultSet.getString("RuleName"), dbResultSet.getInt("BusinessRuleNr"),
-						dbResultSet.getString("TableName"), dbResultSet.getString("ColumnName"),
-						dbResultSet.getInt("MinimumValue"), dbResultSet.getInt("MaximumValue"),
-						(dbResultSet.getString("CompareType")).equals("true"));
+				br = new AttributeCompareRule(query, id, query, query);
 //				break;
 			}
 

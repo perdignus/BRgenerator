@@ -30,7 +30,6 @@ public class BusinessRuleService {
 	}
 
 	public String getTargetColum() {
-
 		return br.getRootColommen();
 	}
 
