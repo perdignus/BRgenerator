@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import data.BusinessRule;
 import data.BusinessRuleService;
 import infrastructure.AttributeCompareDAO;
+import infrastructure.AttributeListDAO;
 import infrastructure.AttributeRangeDAO;
 import infrastructure.RootDAO;
 import infrastructure.TargetDAO;
@@ -44,6 +45,12 @@ public class GeneratorController {
 				brc.setBusinessRuleFromDAO(rootDAO, targetDAO, id);
 				tg = new Oracle(brc);
 				code.add(tg.generateAttributeCompareTrigger());
+				break;
+			case "ATTRIBUTE_LIST":
+				rootDAO = new AttributeListDAO();
+				brc.setBusinessRuleFromDAO(rootDAO, targetDAO, id);
+				tg = new Oracle(brc);
+				code.add(tg.generateAttributeListTrigger());
 				break;
 			default:
 				break;
