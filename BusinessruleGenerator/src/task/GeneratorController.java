@@ -38,6 +38,12 @@ public class GeneratorController {
 				tg = new Oracle(brc);
 				code.add(tg.generateAttributeRangeTrigger());
 				break;
+			case "ATTRIBUTE_COMPARE":
+				rootDAO = new AttributeRangeDAO();
+				brc.setBusinessRuleFromDAO(rootDAO, targetDAO, id);
+				tg = new Oracle(brc);
+				code.add(tg.generateAttributeRangeTrigger());
+				break;
 			default:
 				break;
 			}
