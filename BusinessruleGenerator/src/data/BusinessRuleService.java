@@ -50,17 +50,31 @@ public class BusinessRuleService {
 	}
 
 	public boolean getIsIn() {
-		return ((AttributeRangeRule) br).getIsIn();
+		boolean b = false;
+		if (br.getType() == Typen.Type.ATTRIBUTE_RANGE) {
+			b = ((AttributeRangeRule) br).getIsIn();
+		}
+		if (br.getType() == Typen.Type.ATTRIBUTE_LIST) {
+			b = ((AttributeListRule) br).isIn();
+		}
+		return b;
 	}
 
-	public String getOperator(){
+	public String getOperator() {
 		return ((AttributeCompareRule) br).getOperator();
 	}
-	
-	public String getCompareValue(){
-		return ((AttributeCompareRule) br).getCompareValue();
+
+	public ArrayList<String> getCompareValue() {
+		ArrayList<String> ret = new ArrayList<String>();
+		if (br.getType() == Typen.Type.ATTRIBUTE_RANGE) {
+			ret.add(((AttributeCompareRule) br).getCompareValue());
+		}
+		if (br.getType() == Typen.Type.ATTRIBUTE_LIST) {
+			ret = ((AttributeListRule) br).getCompareValues();
+		}
+		return ret;
 	}
-	
+
 	public void excecuteCode(String code) {
 		targetDAO.excecute(code);
 		saveBusinessRule(br, "temp.obj");
