@@ -28,7 +28,6 @@ public class GeneratorController {
 	public ArrayList<String> controleer() {
 		return brc.getRulesToGenerate();
 	}
-	//pushy fucker
 
 	public void generate() {
 		for (String s : controleer()) {
