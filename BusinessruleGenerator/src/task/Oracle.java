@@ -56,6 +56,7 @@ public class Oracle extends TriggerGenerate {
 	}
 	
 	//test rick push
+	//testing dis
 
 	@Override
 	public String generateAttributeListTrigger() {
