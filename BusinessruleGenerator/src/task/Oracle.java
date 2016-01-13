@@ -72,6 +72,7 @@ public class Oracle extends TriggerGenerate {
 			compareValue.append(" '" + s + "' ");
 			b = true;
 		}
+		compareValue.toString();
 		sb.append("CREATE OR REPLACE " + name);
 		sb.append(" before insert or update of " + targetColum);
 		sb.append(" on " + targetTable);
