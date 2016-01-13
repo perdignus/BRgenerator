@@ -4,29 +4,22 @@ import java.util.ArrayList;
 
 import data.Typen.Type;
 import infrastructure.BusinessRuleDAO;
+import infrastructure.InfrastructureFacade;
 import infrastructure.ObjectDAO;
 import infrastructure.RootDAO;
 import infrastructure.TargetDAO;
 
 public class BusinessRuleService {
 	private BusinessRule br;
-	private BusinessRuleDAO brdao;
-	private RootDAO rootDAO;
-	private TargetDAO targetDAO;
+	private InfrastructureFacade inffac;
 
-	public void setBusinessRuleFromDAO(RootDAO rootDAO, TargetDAO targetDAO, int id) {
-		this.rootDAO = rootDAO;
-		this.targetDAO = targetDAO;
-		br = rootDAO.getData(id);
-	}
-
-	public Type getRuleType() {
-		return br.getType();
+	public void setBusinessRuleFromDAO(int id, Type type) {
+		this.inffac= new InfrastructureFacade();
+		br=inffac.getData(id, type);
 	}
 
 	public ArrayList<String> getRulesToGenerate() {
-		brdao = new BusinessRuleDAO();
-		return brdao.getToBeGenerated();
+		return inffac.getToBeGenerated();
 	}
 
 	public String getTargetColum() {
@@ -76,7 +69,7 @@ public class BusinessRuleService {
 	}
 
 	public void excecuteCode(String code) {
-		targetDAO.excecute(code);
+		inffac.runCode(code);
 		saveBusinessRule(br, "temp.obj");
 	}
 
