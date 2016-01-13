@@ -8,14 +8,17 @@ import infrastructure.InfrastructureFacade;
 import infrastructure.ObjectDAO;
 import infrastructure.RootDAO;
 import infrastructure.TargetDAO;
+import dto.DTO;
 
 public class BusinessRuleService {
 	private BusinessRule br;
+	private DTO brdto;
 	private InfrastructureFacade inffac;
 
 	public void setBusinessRuleFromDAO(int id, Type type) {
 		this.inffac= new InfrastructureFacade();
 		br=inffac.getData(id, type);
+		brdto = inffac.getDataDTO(id, type);
 	}
 
 	public ArrayList<String> getRulesToGenerate() {

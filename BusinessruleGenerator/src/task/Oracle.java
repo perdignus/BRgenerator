@@ -54,9 +54,6 @@ public class Oracle extends TriggerGenerate {
 		sb.append("end " + name + ";");
 		return sb.toString();
 	}
-	
-	//test rick push
-	//testing dis
 
 	@Override
 	public String generateAttributeListTrigger() {
