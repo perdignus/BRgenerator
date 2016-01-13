@@ -45,6 +45,7 @@ public class GeneratorController {
 				brc.setBusinessRuleFromDAO(rootDAO, targetDAO, id);
 				tg = new Oracle(brc);
 				code.add(tg.generateAttributeCompareTrigger());
+				//test
 				break;
 			case "ATTRIBUTE_LIST":
 				rootDAO = new AttributeListDAO();
