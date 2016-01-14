@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		BusinessRuleService brc = new BusinessRuleService();
 		GeneratorController gener = new GeneratorController(brc);
-		gener.generate();
+		gener.generateFromDTO();
 		for (String s : gener.getCode()) {
 			gener.excecute(s);
 		}

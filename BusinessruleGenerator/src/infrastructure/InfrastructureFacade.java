@@ -66,4 +66,9 @@ public class InfrastructureFacade {
 		brdao = new BusinessRuleDAO();
 		return brdao.getToBeGenerated();
 	}
+	
+	public ArrayList<DTO> getToBeGeneratedDTO() {
+		BusinessRuleDAO brdao = new BusinessRuleDAO();
+		return brdao.getToBeGeneratedDTO();
+	}
 }

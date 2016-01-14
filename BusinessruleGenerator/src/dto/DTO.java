@@ -7,7 +7,7 @@ import data.Typen.Type;
 
 public class DTO {
 	
-	//private String operator;
+	
 	private ArrayList<String> controleLijst;
 	private boolean isIn;
 	private String ruleName;
@@ -15,19 +15,12 @@ public class DTO {
 	private String table;
 	private String column;
 	private String operator;
-	private String CompareValue;
+	private String compareValue;
+	private String ruleType;
 	
 	public DTO() {
 	 
 	}
-	
-//	public String getOperator() {
-//		return operator;
-//	}
-
-//	public void setOperator(String operator) {
-//		this.operator = operator;
-//	}
 
 	public ArrayList<String> getControleLijst() {
 		return controleLijst;
@@ -86,11 +79,19 @@ public class DTO {
 	}
 
 	public String getCompareValue() {
-		return CompareValue;
+		return compareValue;
 	}
 
 	public void setCompareValue(String compareValue) {
-		CompareValue = compareValue;
+		compareValue = compareValue;
+	}
+
+	public String getRuleType() {
+		return ruleType;
+	}
+
+	public void setRuleType(String ruleType) {
+		this.ruleType = ruleType;
 	}
 
 }

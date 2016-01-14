@@ -12,17 +12,21 @@ import dto.DTO;
 
 public class BusinessRuleService {
 	private BusinessRule br;
-	private DTO brdto;
+	//private DTO brdto;
 	private InfrastructureFacade inffac;
 
 	public void setBusinessRuleFromDAO(int id, Type type) {
 		this.inffac= new InfrastructureFacade();
 		br=inffac.getData(id, type);
-		brdto = inffac.getDataDTO(id, type);
+		//brdto = inffac.getDataDTO(id, type);
 	}
 
 	public ArrayList<String> getRulesToGenerate() {
 		return inffac.getToBeGenerated();
+	}
+	
+	public ArrayList<DTO> getRulesToGenerateDTO() {
+		return inffac.getToBeGeneratedDTO();
 	}
 
 	public String getTargetColum() {
@@ -85,6 +89,14 @@ public class BusinessRuleService {
 		ObjectDAO obDAO = new ObjectDAO();
 		return obDAO.load(naam);
 	}
+
+//	public DTO getBrdto() {
+//		return brdto;
+//	}
+//
+//	public void setBrdto(DTO brdto) {
+//		this.brdto = brdto;
+//	}
 
 	// public void setDAO(DAO dao) {
 	// // TODO Auto-generated method stub

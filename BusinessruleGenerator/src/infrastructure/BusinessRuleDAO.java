@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import dto.DTO;
+
 public class BusinessRuleDAO extends RootConnector {
 
 	public ArrayList<String> getToBeGenerated() {
@@ -29,5 +31,27 @@ public class BusinessRuleDAO extends RootConnector {
 
 		return ret;
 	}
+	
+	public ArrayList<DTO> getToBeGeneratedDTO() {
+		ArrayList<DTO> dtoList = new ArrayList<DTO>();
+		String query = "SELECT br.RuleNr, br.RuleTypeName FROM BusinessRule br WHERE br.Status IN ('created','edited');";
 
+		try (Connection con = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD)) {
+			Statement stmt = con.createStatement();
+			ResultSet dbResultSet = stmt.executeQuery(query);
+			while (dbResultSet.next()) {
+				DTO dto = new DTO();
+				
+				dto.setRuleNr(dbResultSet.getInt(0));
+				dto.setRuleType(dbResultSet.getString(1));
+				dtoList.add(dto);
+			}
+			
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
+
+		return dtoList;
+	}
+	
 }

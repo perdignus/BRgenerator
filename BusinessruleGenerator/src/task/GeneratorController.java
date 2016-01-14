@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import data.BusinessRule;
 import data.BusinessRuleService;
 import data.Typen.Type;
+import dto.DTO;
 import infrastructure.AttributeCompareDAO;
 import infrastructure.AttributeListDAO;
 import infrastructure.AttributeRangeDAO;
@@ -12,21 +13,23 @@ import infrastructure.RootDAO;
 import infrastructure.TargetDAO;
 
 public class GeneratorController {
-	private RootDAO rootDAO;
-	private TargetDAO targetDAO;
+	
 	private BusinessRuleService brc;
-	private ArrayList<String> br;
+	//private ArrayList<String> br;
 	private ArrayList<String> code;
 
 	public GeneratorController(BusinessRuleService brc) {
 		this.brc = brc;
 		code = new ArrayList<String>();
-		br = new ArrayList<String>();
-		targetDAO = new TargetDAO();
+		//br = new ArrayList<String>();
 	}
 
 	public ArrayList<String> controleer() {
 		return brc.getRulesToGenerate();
+	}
+	
+	public ArrayList<DTO> controleerDTO() {
+		return brc.getRulesToGenerateDTO();
 	}
 
 	public void generate() {
@@ -36,20 +39,51 @@ public class GeneratorController {
 			TriggerGenerate tg;
 			switch (temp[1]) {
 			case "ATTRIBUTE_RANGE":
-				rootDAO = new AttributeRangeDAO();
+				//rootDAO = new AttributeRangeDAO();
 				brc.setBusinessRuleFromDAO(id, Type.ATTRIBUTE_RANGE);
 				tg = new Oracle(brc);
 				code.add(tg.generateAttributeRangeTrigger());
 				break;
 			case "ATTRIBUTE_COMPARE":
-				rootDAO = new AttributeCompareDAO();
+				//rootDAO = new AttributeCompareDAO();
 				brc.setBusinessRuleFromDAO(id, Type.ATTRIBUTE_COMPARE);
 				tg = new Oracle(brc);
 				code.add(tg.generateAttributeCompareTrigger());
 				//test
 				break;
 			case "ATTRIBUTE_LIST":
-				rootDAO = new AttributeListDAO();
+				//rootDAO = new AttributeListDAO();
+				brc.setBusinessRuleFromDAO(id, Type.ATTRIBUTE_LIST);
+				tg = new Oracle(brc);
+				code.add(tg.generateAttributeListTrigger());
+				break;
+			default:
+				break;
+			}
+		}
+	}
+	
+	public void generateFromDTO() {
+		for (DTO dto : controleerDTO()) {
+			
+			int id = dto.getRuleNr();
+			TriggerGenerate tg;
+			switch (dto.getRuleType()) {
+			case "ATTRIBUTE_RANGE":
+				//rootDAO = new AttributeRangeDAO();
+				brc.setBusinessRuleFromDAO(id, Type.ATTRIBUTE_RANGE);
+				tg = new Oracle(brc);
+				code.add(tg.generateAttributeRangeTrigger());
+				break;
+			case "ATTRIBUTE_COMPARE":
+				//rootDAO = new AttributeCompareDAO();
+				brc.setBusinessRuleFromDAO(id, Type.ATTRIBUTE_COMPARE);
+				tg = new Oracle(brc);
+				code.add(tg.generateAttributeCompareTrigger());
+				//test
+				break;
+			case "ATTRIBUTE_LIST":
+				//rootDAO = new AttributeListDAO();
 				brc.setBusinessRuleFromDAO(id, Type.ATTRIBUTE_LIST);
 				tg = new Oracle(brc);
 				code.add(tg.generateAttributeListTrigger());

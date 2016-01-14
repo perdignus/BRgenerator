@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 import data.AttributeRangeRule;
 import data.BusinessRule;
+import dto.DTO;
 
 public class AttributeRangeDAO extends RootDAO {
 
@@ -40,6 +41,12 @@ public class AttributeRangeDAO extends RootDAO {
 		}
 
 		return br;
+	}
+
+	@Override
+	public DTO getDataDTO(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
